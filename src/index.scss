@@ -1,0 +1,11 @@
+@import './_config.scss';
+
+body {
+  margin: 0 auto;
+  background-color: $main-bg-color;
+  font-family: $font-stack;
+}
+
+* {
+  box-sizing: border-box;
+}

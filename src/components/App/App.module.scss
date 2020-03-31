@@ -1,0 +1,25 @@
+@import '../../config';
+
+.App {
+  margin: 0 auto 120px;
+  max-width: 795px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+
+  .Main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .RightColumn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      & > * {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../config';
+
+.LayoverFilters {
+  width: 232px;
+  height: 252px;
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius-default;
+  background: $true-white-color;
+  color: $dark-gray-color;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+  .Title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 20px;
+    padding-bottom: 10px;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: $dark-gray-color;
+  }
+}

@@ -1,0 +1,44 @@
+@import '../../config';
+
+.Notification {
+  background: $true-white-color;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  border-radius: $border-radius-default;
+  padding: 20px 20px 10px 20px;
+
+  .Title {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .Message {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .Button {
+    background-color: $orange-color;
+    color: $true-white-color;
+    margin: 10px auto 10px;
+    padding: 8px 20px;
+    border-radius: $border-radius-default;
+    border: none;
+    font-size: 16px;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-orange-color;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all .1s ease-in-out;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

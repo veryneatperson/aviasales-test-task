@@ -1,0 +1,59 @@
+@import '../../config';
+
+.LayoverFilter {
+  display: flex;
+  align-items: center;
+  padding: 10px 70px 10px 20px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background: $secondary-color;
+  }
+
+  &:last-child {
+    padding-bottom: 20px;
+
+    &:hover {
+      border-radius: $border-radius-default;
+    }
+  }
+
+  .LayoverFilterInput {
+    display: none;
+
+    &:checked + .LayoverFilterName {
+      border-color: $primary-color;
+    }
+
+    &:checked + .LayoverFilterName::after {
+      content: "";
+      position: absolute;
+      height: 4px;
+      width: 8px;
+      border-left: 2px solid $primary-color;
+      border-bottom: 2px solid $primary-color;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .LayoverFilterName {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    border: 1px solid $light-blue-color;
+    border-radius: $border-radius-small;
+  }
+
+  .LayoverFilterText {
+    width: 112px;
+    height: 20px;
+  }
+}
