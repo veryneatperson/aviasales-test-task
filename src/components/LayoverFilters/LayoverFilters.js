@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './LayoverFilters.module.scss';
 import LayoverFilter from '../LayoverFilter/LayoverFilter';
@@ -34,5 +35,17 @@ const LayoverFilters = ({ filters, toggleFilter, toggleAllFilters }) => (
     })}
   </div>
 );
+
+LayoverFilters.propTypes = {
+  filters: PropTypes.shape({
+    any: PropTypes.bool.isRequired,
+    noLayovers: PropTypes.bool.isRequired,
+    oneLayover: PropTypes.bool.isRequired,
+    twoLayovers: PropTypes.bool.isRequired,
+    threeLayovers: PropTypes.bool.isRequired,
+  }),
+  toggleFilter: PropTypes.func.isRequired,
+  toggleAllFilters: PropTypes.func.isRequired,
+};
 
 export default LayoverFilters;
