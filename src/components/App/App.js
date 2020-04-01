@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './App.module.scss';
 import Spinner from '../Spinner/Spinner';
@@ -11,7 +12,8 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 class App extends Component {
   componentDidMount() {
-    // this.props.getTickets();
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.getTickets();
   }
 
   render() {
@@ -43,5 +45,12 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  searchIdErrorMsg: PropTypes.string.isRequired,
+  ticketsErrorMsg: PropTypes.string.isRequired,
+  getTickets: PropTypes.func.isRequired,
+};
 
 export default App;
