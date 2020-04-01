@@ -18,7 +18,7 @@ const SortingTab = ({
 SortingTab.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  checked: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
   setSortBy: PropTypes.func.isRequired,
 };
 
