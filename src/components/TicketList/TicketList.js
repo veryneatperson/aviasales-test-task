@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './TicketList.module.scss';
 import Notification from '../Notification/Notification';
@@ -27,10 +28,18 @@ class TicketList extends Component {
       );
     } else {
       content = (
-        <React.Fragment>
-          {filteredTickets.slice(0, amount).map((ticket) => <Ticket ticket={ticket} key={`${ticket.segments[0].date}${ticket.segments[0].duration}`} />)}
-          <button onClick={this.showMoreTickets} className={styles.Button}>{`Показать еще ${step} билетов`}</button>
-        </React.Fragment>
+        <>
+          {
+            filteredTickets
+              .slice(0, amount)
+              .map((ticket) => (
+                <Ticket ticket={ticket} key={`${ticket.segments[0].date}${ticket.segments[0].duration}`} />
+              ))
+          }
+          <button onClick={this.showMoreTickets} className={styles.Button} type="button">
+            {`Показать еще ${step} билетов`}
+          </button>
+        </>
       );
     }
 
@@ -41,5 +50,31 @@ class TicketList extends Component {
     );
   }
 }
+
+TicketList.propTypes = {
+  tickets: PropTypes.arrayOf(PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    carrier: PropTypes.string.isRequired,
+    segments: PropTypes.arrayOf(PropTypes.shape({
+      origin: PropTypes.string.isRequired,
+      destination: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      stops: PropTypes.arrayOf(PropTypes.string).isRequired,
+      duration: PropTypes.number.isRequired,
+    })),
+  })),
+  filteredTickets: PropTypes.arrayOf(PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    carrier: PropTypes.string.isRequired,
+    segments: PropTypes.arrayOf(PropTypes.shape({
+      origin: PropTypes.string.isRequired,
+      destination: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      stops: PropTypes.arrayOf(PropTypes.string).isRequired,
+      duration: PropTypes.number.isRequired,
+    })),
+  })),
+  resetFilters: PropTypes.func.isRequired,
+};
 
 export default TicketList;
