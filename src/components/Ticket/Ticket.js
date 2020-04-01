@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Ticket.module.scss';
 import {
@@ -37,6 +38,20 @@ const Ticket = ({ ticket }) => {
       </div>
     </div>
   );
+};
+
+Ticket.propTypes = {
+  ticket: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    carrier: PropTypes.string.isRequired,
+    segments: PropTypes.arrayOf(PropTypes.shape({
+      origin: PropTypes.string.isRequired,
+      destination: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      stops: PropTypes.arrayOf(PropTypes.string).isRequired,
+      duration: PropTypes.number.isRequired,
+    })),
+  }),
 };
 
 export default React.memo(Ticket);

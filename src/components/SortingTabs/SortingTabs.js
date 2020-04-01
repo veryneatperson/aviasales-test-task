@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './SortingTabs.module.scss';
 import SortingTab from '../SortingTab/SortingTab';
@@ -21,5 +22,10 @@ const SortingTabs = ({ sortBy, setSortBy }) => (
       : <SortingTab key={option.label} {...option} setSortBy={setSortBy} />))}
   </ul>
 );
+
+SortingTabs.propTypes = {
+  sortBy: PropTypes.string.isRequired,
+  setSortBy: PropTypes.func.isRequired,
+};
 
 export default SortingTabs;
