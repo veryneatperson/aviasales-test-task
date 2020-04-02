@@ -29,6 +29,8 @@ const displayEndDateHoursAndMinutes = (ISOdate, duration) => {
   return `${hours}:${minutes}`;
 };
 
-export const displayStartAndEndDates = (ISOstartDate, duration) => (
+const displayStartAndEndDates = (ISOstartDate, duration) => (
   `${displayStartDateHoursAndMinutes(ISOstartDate)} - ${displayEndDateHoursAndMinutes(ISOstartDate, duration)}`
 );
+
+export default displayStartAndEndDates;

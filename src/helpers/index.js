@@ -1,15 +1,15 @@
 export {
-  displayDurationInHoursAndMinutes,
+  default as displayDurationInHoursAndMinutes,
 } from './displayDurationInHoursAndMinutes';
 
 export {
-  displayLayoversLabel,
+  default as displayLayoversLabel,
 } from './displayLayoversLabel';
 
 export {
-  displayPrice,
+  default as displayPrice,
 } from './displayPrice';
 
 export {
-  displayStartAndEndDates,
+  default as displayStartAndEndDates,
 } from './displayStartAndEndDates';
