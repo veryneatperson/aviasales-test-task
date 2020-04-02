@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import searchIdReducer from './reducers/searchId';
 import ticketsReducer from './reducers/tickets';
 import selectionReducer from './reducers/selection';
-import { watchTickets } from './sagas';
+import watchTickets from './sagas';
 
 const composeEnhancers = process.env.NODE_ENV === 'development'
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

@@ -4,7 +4,7 @@ import { call, put } from 'redux-saga/effects';
 import { searchIdURL, searchIdErrorMsg } from '../../constants';
 import { getSearchIdRequest, getSearchIdSuccess, getSearchIdFailure } from '../actions/searchId';
 
-export function* getSearchId() {
+function* getSearchId() {
   yield put(getSearchIdRequest());
   try {
     const res = yield call(axios.get, searchIdURL);
@@ -13,3 +13,5 @@ export function* getSearchId() {
     yield put(getSearchIdFailure(searchIdErrorMsg));
   }
 }
+
+export default getSearchId;
