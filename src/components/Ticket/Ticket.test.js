@@ -9,28 +9,10 @@ import {
   constructImgUrl,
 } from '../../helpers';
 import { carrierLogoURL } from '../../constants';
+import { mockedTickets } from '../../fixtures/mockedData';
 
 const defaultProps = {
-  ticket: {
-    price: 76070,
-    carrier: 'EK',
-    segments: [
-      {
-        origin: 'MOW',
-        destination: 'HKT',
-        date: '2020-04-17T14:35:00.000Z',
-        stops: ['KUL'],
-        duration: 729,
-      },
-      {
-        origin: 'MOW',
-        destination: 'HKT',
-        date: '2020-05-07T11:34:00.000Z',
-        stops: [],
-        duration: 642,
-      },
-    ],
-  },
+  ticket: mockedTickets[0],
 };
 
 const setup = (props = {}) => {
@@ -50,22 +32,13 @@ describe('<Ticket>', () => {
   });
 
   it('should render <img> with src determined by props.ticket.carrier', () => {
-    const expectedOutput = constructImgUrl(
-      carrierLogoURL,
-      defaultProps.ticket.carrier,
-    );
+    const expectedOutput = constructImgUrl(carrierLogoURL, defaultProps.ticket.carrier);
     const carrierLogo = wrapper.findWhere((n) => n.hasClass('CarrierLogo'));
     expect(carrierLogo.prop('src')).toBe(expectedOutput);
   });
 
   describe('for the first segment', () => {
-    const {
-      origin,
-      destination,
-      date,
-      duration,
-      stops,
-    } = defaultProps.ticket.segments[0];
+    const { origin, destination, date, duration, stops } = defaultProps.ticket.segments[0];
 
     it('should render IATA origin and destination codes', () => {
       const expectedOutput = displayIATAcodes(origin, destination);
@@ -94,13 +67,7 @@ describe('<Ticket>', () => {
   });
 
   describe('for the second segment', () => {
-    const {
-      origin,
-      destination,
-      date,
-      duration,
-      stops,
-    } = defaultProps.ticket.segments[1];
+    const { origin, destination, date, duration, stops } = defaultProps.ticket.segments[1];
 
     it('should render IATA origin and destination codes', () => {
       const expectedOutput = displayIATAcodes(origin, destination);
