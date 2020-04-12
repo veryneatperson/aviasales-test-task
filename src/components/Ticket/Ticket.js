@@ -19,31 +19,21 @@ const Ticket = ({ ticket }) => {
     <div className={styles.Ticket}>
       <div className={styles.Header}>
         <h3 className={styles.Price}>{displayPrice(price, 'Р')}</h3>
-        <img
-          className={styles.CarrierLogo}
-          src={constructImgUrl(carrierLogoURL, carrier)}
-          alt="aviacompany logo"
-        />
+        <img className={styles.CarrierLogo} src={constructImgUrl(carrierLogoURL, carrier)} alt="aviacompany logo" />
       </div>
       <div className={styles.Content}>
         {segments.map(({ origin, destination, date, stops, duration }) => (
           <div className={styles.ContentRow} key={`${date}${duration}`}>
             <div className={styles.Block}>
-              <span className={styles.Key}>
-                {displayIATAcodes(origin, destination)}
-              </span>
-              <span className={styles.Value}>
-                {displayTime(date, duration)}
-              </span>
+              <span className={styles.Key}>{displayIATAcodes(origin, destination)}</span>
+              <span className={styles.Value}>{displayTime(date, duration)}</span>
             </div>
             <div className={styles.Block}>
               <span className={styles.Key}>в пути</span>
               <span className={styles.Value}>{displayDuration(duration)}</span>
             </div>
             <div className={styles.Block}>
-              <span className={styles.Key}>
-                {displayLayoversLabel(stops.length)}
-              </span>
+              <span className={styles.Key}>{displayLayoversLabel(stops.length)}</span>
               <span className={styles.Value}>{displayLayovers(stops)}</span>
             </div>
           </div>
