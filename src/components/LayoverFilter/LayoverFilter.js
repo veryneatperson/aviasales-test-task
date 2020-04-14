@@ -3,21 +3,25 @@ import PropTypes from 'prop-types';
 
 import styles from './LayoverFilter.module.scss';
 
-const LayoverFilter = ({ checked, onChangeHandler, text }) => (
-  // eslint-disable-next-line jsx-a11y/label-has-associated-control
-  <label className={styles.LayoverFilter}>
-    <input
-      type="checkbox"
-      className={styles.LayoverFilterInput}
-      checked={checked}
-      onChange={onChangeHandler}
-    />
-    <span className={styles.LayoverFilterName} />
-    <span className={styles.LayoverFilterText}>{text}</span>
-  </label>
-);
+const LayoverFilter = ({ name, checked, onChangeHandler, text }) => {
+  let handleChange;
+  if (name === 'any') {
+    handleChange = () => onChangeHandler();
+  } else {
+    handleChange = () => onChangeHandler(name);
+  }
+
+  return (
+    <label className={styles.LayoverFilter}>
+      <input type="checkbox" className={styles.LayoverFilterInput} checked={checked} onChange={handleChange} />
+      <span className={styles.LayoverFilterName} />
+      <span className={styles.LayoverFilterText}>{text}</span>
+    </label>
+  );
+};
 
 LayoverFilter.propTypes = {
+  name: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   onChangeHandler: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
