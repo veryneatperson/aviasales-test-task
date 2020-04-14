@@ -1,8 +1,9 @@
 import LayoverFilter from './LayoverFilter';
 
 const defaultProps = {
+  name: 'any',
   checked: true,
-  text: 'Random text',
+  text: 'Все',
 };
 
 const setup = (props = {}) => {
@@ -27,8 +28,15 @@ describe('<LayoverFilter>', () => {
     expect(wrapper.find('input').prop('checked')).toBe(defaultProps.checked);
   });
 
-  it('should call props.onChangeHandler on input change', () => {
+  it(`should call props.onChangeHandler on input change with no args if props.name === 'any'`, () => {
     wrapper.find('input').simulate('change');
-    expect(onChangeHandlerMock).toHaveBeenCalled();
+    expect(onChangeHandlerMock).not.toHaveBeenCalledWith(defaultProps.name);
+  });
+
+  it(`should call props.onChangeHandler on input change with props.name if props.name !== 'any'`, () => {
+    const name = 'oneLayover';
+    wrapper.setProps({ name });
+    wrapper.find('input').simulate('change');
+    expect(onChangeHandlerMock).toHaveBeenCalledWith(name);
   });
 });
