@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './LayoverFilters.module.scss';
 import LayoverFilter from '../LayoverFilter/LayoverFilter';
 
-const checkboxLabels = {
+export const checkboxLabels = {
   any: 'Все',
   noLayovers: 'Без пересадок',
   oneLayover: '1 пересадка',
@@ -15,21 +15,16 @@ const checkboxLabels = {
 const LayoverFilters = ({ filters, toggleFilter, toggleAllFilters }) => (
   <div className={styles.LayoverFilters}>
     <h3 className={styles.Title}>Количество пересадок</h3>
-    {Object.keys(filters).map((elem) => {
-      let onChangeHandler;
-
-      if (elem === 'any') {
-        onChangeHandler = () => toggleAllFilters(!filters[elem]);
-      } else {
-        onChangeHandler = () => toggleFilter(elem, !filters[elem]);
-      }
+    {Object.keys(filters).map((filter) => {
+      const onChangeHandler = filter === 'any' ? toggleAllFilters : toggleFilter;
 
       return (
         <LayoverFilter
-          key={elem}
-          checked={filters[elem]}
+          key={checkboxLabels[filter]}
+          checked={filters[filter]}
           onChangeHandler={onChangeHandler}
-          text={checkboxLabels[elem]}
+          text={checkboxLabels[filter]}
+          name={filter}
         />
       );
     })}
