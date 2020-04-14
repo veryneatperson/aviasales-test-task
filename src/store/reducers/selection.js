@@ -1,8 +1,4 @@
-import {
-  SET_SORT_BY,
-  TOGGLE_FILTER,
-  TOGGLE_ALL_FILTERS,
-} from '../actions/selection';
+import { SET_SORT_BY, TOGGLE_FILTER, TOGGLE_ALL_FILTERS } from '../actions/selection';
 
 const initialState = {
   sortBy: 'cheapest',
@@ -15,6 +11,9 @@ const initialState = {
   },
 };
 
+const areSingleFiltersAllChecked = ({ filters: { noLayovers, oneLayover, twoLayovers, threeLayovers } }) =>
+  noLayovers && oneLayover && twoLayovers && threeLayovers;
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_SORT_BY:
@@ -22,29 +21,30 @@ export default (state = initialState, action) => {
         ...state,
         sortBy: action.payload,
       };
+
     case TOGGLE_FILTER:
       const newState = {
         ...state,
         filters: {
           ...state.filters,
-          [action.payload.filter]: action.payload.value,
+          [action.payload]: !state.filters[action.payload],
         },
       };
-      if (newState.filters.noLayovers && newState.filters.oneLayover && newState.filters.twoLayovers && newState.filters.threeLayovers) {
-        newState.filters.any = true;
-      } else {
-        newState.filters.any = false;
-      }
+
+      areSingleFiltersAllChecked(newState) ? (newState.filters.any = true) : (newState.filters.any = false);
+
       return newState;
+
     case TOGGLE_ALL_FILTERS:
+      const newValue = !state.filters.any;
       return {
         ...state,
         filters: {
-          any: action.payload,
-          noLayovers: action.payload,
-          oneLayover: action.payload,
-          twoLayovers: action.payload,
-          threeLayovers: action.payload,
+          any: newValue,
+          noLayovers: newValue,
+          oneLayover: newValue,
+          twoLayovers: newValue,
+          threeLayovers: newValue,
         },
       };
     default:

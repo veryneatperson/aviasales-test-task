@@ -7,12 +7,11 @@ export const setSortBy = (sortingOption) => ({
   payload: sortingOption,
 });
 
-export const toggleAllFilters = (value) => ({
+export const toggleAllFilters = () => ({
   type: TOGGLE_ALL_FILTERS,
-  payload: value,
 });
 
-export const toggleFilter = (filter, value) => ({
+export const toggleFilter = (filter) => ({
   type: TOGGLE_FILTER,
-  payload: { filter, value },
+  payload: filter,
 });
