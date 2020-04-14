@@ -9,8 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleFilter: (filter, value) => dispatch(toggleFilter(filter, value)),
-  toggleAllFilters: (value) => dispatch(toggleAllFilters(value)),
+  toggleFilter: (filter) => dispatch(toggleFilter(filter)),
+  toggleAllFilters: () => dispatch(toggleAllFilters()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoverFilters);

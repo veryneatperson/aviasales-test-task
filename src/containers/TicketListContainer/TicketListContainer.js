@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetFilters: () => dispatch(toggleAllFilters(true)),
+  resetFilters: () => dispatch(toggleAllFilters()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TicketList);
