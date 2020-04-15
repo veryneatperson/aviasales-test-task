@@ -9,14 +9,6 @@ const initialState = {
   loading: false,
   errorMsg: '',
   tickets: [],
-  sortBy: 'cheapest',
-  filters: {
-    any: true,
-    noLayovers: true,
-    oneLayover: true,
-    twoLayovers: true,
-    threeLayovers: true,
-  },
 };
 
 export default (state = initialState, action) => {
