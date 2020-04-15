@@ -30,7 +30,7 @@ class TicketList extends Component {
       content = (
         <>
           {filteredTickets.slice(0, amount).map((ticket) => (
-            <Ticket ticket={ticket} key={`${ticket.segments[0].date}${ticket.segments[0].duration}`} />
+            <Ticket ticket={ticket} key={`${ticket.price}${ticket.segments[0].date}${ticket.segments[1].date}`} />
           ))}
           <button onClick={this.showMoreTickets} className={styles.Button} type="button">
             {`Показать еще ${step} билетов`}
