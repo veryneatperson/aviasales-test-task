@@ -23,7 +23,8 @@ class TicketList extends Component {
         <Notification
           title={`Мы нашли ${ticketsAmount} рейсов, но ни один не соответствует заданным фильтрам.`}
           message="Попробуйте использовать меньше фильтров или воспользуйтесь кнопкой для сброса всех фильтров."
-          resetFilters={resetFilters}
+          btnText="Сбросить фильтры"
+          handleClick={resetFilters}
         />
       );
     } else {

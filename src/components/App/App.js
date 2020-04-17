@@ -12,7 +12,6 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 class App extends Component {
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
     this.props.getTickets();
   }
 
