@@ -12,11 +12,9 @@ const setup = (props = {}) => {
 
 describe('<Notification>', () => {
   let wrapper;
-  let resetFiltersMock;
 
   beforeEach(() => {
-    resetFiltersMock = jest.fn();
-    wrapper = setup({ resetFilters: resetFiltersMock });
+    wrapper = setup();
   });
 
   it('should render props.title', () => {
@@ -27,8 +25,30 @@ describe('<Notification>', () => {
     expect(wrapper.contains(defaultProps.message)).toBe(true);
   });
 
-  it('should call props.resetFilters on button click', () => {
-    wrapper.find('button').simulate('click');
-    expect(resetFiltersMock).toHaveBeenCalled();
+  it('should not render button when there is no props.btnText passed', () => {
+    expect(wrapper.find('button').length).toBe(0);
+  });
+
+  describe('with btnText and handleClick passed via props', () => {
+    let resetFiltersMock;
+    const btnText = 'Button text';
+
+    beforeEach(() => {
+      resetFiltersMock = jest.fn();
+      wrapper = setup({ handleClick: resetFiltersMock, btnText });
+    });
+
+    it('should render button', () => {
+      expect(wrapper.find('button').length).toBe(1);
+    });
+
+    it('should render btnText', () => {
+      expect(wrapper.contains(btnText)).toBe(true);
+    });
+
+    it('should call props.resetFilters on button click', () => {
+      wrapper.find('button').simulate('click');
+      expect(resetFiltersMock).toHaveBeenCalled();
+    });
   });
 });
