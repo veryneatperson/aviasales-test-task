@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { call, put, select } from 'redux-saga/effects';
 
-import {
-  getTicketsRequest, getTicketsChunkSuccess, getTicketsSuccess, getTicketsFailure,
-} from '../actions/tickets';
+import { getTicketsRequest, getTicketsChunkSuccess, getTicketsSuccess, getTicketsFailure } from '../actions/tickets';
 import getSearchId from './searchId';
 import { selectSearchId } from '../selectors/searchId';
-import { ticketsErrorMsg, baseTicketsURL } from '../../constants';
+import { ticketsErrorMsg, baseURL } from '../../constants';
 
 function* getTicketsBySearchId(action) {
   yield put(getTicketsRequest());
@@ -14,7 +12,7 @@ function* getTicketsBySearchId(action) {
   let shouldStop = false;
   while (!shouldStop) {
     try {
-      const res = yield call(axios.get, `${baseTicketsURL}${searchId}`);
+      const res = yield call(axios.get, `${baseURL}/tickets?searchId=${searchId}`);
       if (res.data.stop) shouldStop = true;
       yield put(getTicketsChunkSuccess(res.data.tickets));
     } catch (err) {
