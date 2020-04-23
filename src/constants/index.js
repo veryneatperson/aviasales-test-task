@@ -6,6 +6,6 @@ export const originalURL = 'https://front-test.beta.aviasales.ru';
 export const mockURL = 'https://mock-aviasales-server.herokuapp.com';
 
 // This boolean represents the status of the original Aviasales server
-let isOriginalServerDown = true;
+let isOriginalServerDown = false;
 
 export const baseURL = isOriginalServerDown ? mockURL : originalURL;

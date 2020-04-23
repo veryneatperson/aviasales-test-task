@@ -2,6 +2,10 @@
 
 This is a completed frontend test task from Aviasales (https://github.com/KosyanMedia/test-tasks/tree/master/aviasales_frontend)
 
+# 23.04.20 UPDATE
+
+The original server is up and running.
+
 # 20.04.20 UPDATE
 
 Since the aviasales server has been down for the last week or so, i create a mocked version of the server (currently with no long-polling but it might be added a bit later)
