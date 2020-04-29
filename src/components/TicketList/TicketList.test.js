@@ -40,7 +40,7 @@ describe('<TicketList>', () => {
       });
 
       it('with passed props.resetFiltes', () => {
-        expect(wrapper.find('Notification').prop('resetFilters')).toEqual(resetFiltersMock);
+        expect(wrapper.find('Notification').prop('handleClick')).toEqual(resetFiltersMock);
       });
     });
 
