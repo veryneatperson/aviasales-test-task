@@ -6,7 +6,7 @@ import getSearchId from './searchId';
 import { selectSearchId } from '../selectors/searchId';
 import { ticketsErrorMsg, baseURL } from '../../constants';
 
-function* getTicketsBySearchId(action) {
+export function* getTicketsBySearchId(action) {
   yield put(getTicketsRequest());
   const { searchId } = action;
   let shouldStop = false;
@@ -35,5 +35,3 @@ export function* loadTicketsSaga(action) {
     yield put(getTicketsFailure(ticketsErrorMsg));
   }
 }
-
-export default loadTicketsSaga;
