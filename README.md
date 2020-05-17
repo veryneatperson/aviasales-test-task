@@ -8,7 +8,7 @@ The original server is up and running.
 
 # 20.04.20 UPDATE
 
-Since the aviasales server has been down for the last week or so, i create a mocked version of the server (currently with no long-polling but it might be added a bit later)
+Since the aviasales server has been down for the last week or so, i create a mocked version of the server (currently with no long-polling, but it might be added later)
 
 # Deployed App
 
@@ -20,7 +20,7 @@ I decided to implement a couple of extra features that weren't in the original t
 
 - Button that smoothly scrolls to the top of the page
 - The ability to show more than first 5 tickets
-- Unit tests (still working on that...)
+- Unit tests
 
 # Libraries used
 
